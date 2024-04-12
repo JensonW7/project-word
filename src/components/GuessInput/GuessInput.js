@@ -21,7 +21,7 @@ function GuessInput({ handleSubmitGuess, gameStatus }) {
             type="text" 
             pattern="^[a-zA-z]{5}$"
             title="5 Letter Word Required"
-            disabled={gameStatus != "playing"}
+            disabled={gameStatus !== "playing"}
             value={guess}
             onChange={(event) => {
               setGuess(event.target.value.toUpperCase());
