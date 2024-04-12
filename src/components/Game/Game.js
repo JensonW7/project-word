@@ -38,7 +38,7 @@ function Game() {
         gameStatus={gameStatus}
       />
       {gameStatus === 'won' ? <WinningBanner guessNum={guessList.length}/>
-      : gameStatus ==='lost' ? <LosingBanner />
+      : gameStatus ==='lost' ? <LosingBanner answer={answer}/>
       : undefined
       }
     </>
