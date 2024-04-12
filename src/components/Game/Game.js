@@ -11,17 +11,17 @@ import LosingBanner from '../LosingBanner/LosingBanner';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import { checkGuess } from '../../game-helpers';
 
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-
 function Game() {
+  const [answer, setAnswer] = React.useState(sample(WORDS));
   const [guessList, setGuessList] = React.useState([]);
   const [gameStatus, setGameStatus] = React.useState("playing");
+
+  console.log(answer);
 
   function handleRestart() {
     const newAnswer = sample(WORDS);
     setAnswer(newAnswer);
-    setGuesses([]);
+    setGuessList([]);
     setGameStatus('running');
   }
 
@@ -50,8 +50,8 @@ function Game() {
         handleSubmitGuess={handleSubmitGuess}
         gameStatus={gameStatus}
       />
-      {gameStatus === 'won' ? <WinningBanner guessNum={guessList.length}/>
-      : gameStatus ==='lost' ? <LosingBanner answer={answer}/>
+      {gameStatus === 'won' ? <WinningBanner guessNum={guessList.length} handleRestart={handleRestart}/>
+      : gameStatus ==='lost' ? <LosingBanner answer={answer} handleRestart={handleRestart}/>
       : undefined
       }
       <Keyboard validatedGuesses={validatedGuesses} />
