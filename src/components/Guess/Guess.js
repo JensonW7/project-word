@@ -13,7 +13,6 @@ function Cell({ letter, status }) {
 
 function Guess({ value, answer }) {
   const guessResult = checkGuess(value, answer);
-  console.log(guessResult);
 
   return (
     <div className="guess-results">
